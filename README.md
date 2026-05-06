@@ -19,7 +19,45 @@ STEP-4: Arrange the characters of the keyword in sorted order and the correspond
 STEP-5: Read the characters row wise or column wise in the former order to get the cipher text.
 
 # PROGRAM
+```
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[1000];
+    int rails, len;
+
+    printf("Enter message: ");
+    scanf(" %[^\n]", str);
+
+    printf("Enter rails: ");
+    scanf("%d", &rails);
+
+    len = strlen(str);
+
+    for (int r = 0; r < rails; r++) {
+        int i = r, down = 1;
+
+        while (i < len) {
+            printf("%c", str[i]);
+
+            if (r == 0 || r == rails - 1)
+                i += 2 * (rails - 1);
+            else {
+                if (down)
+                    i += 2 * (rails - r - 1);
+                else
+                    i += 2 * r;
+                down = !down;
+            }
+        }
+    }
+
+    return 0;
+}
+```
 
 # OUTPUT
+![alt text](<Screenshot 2026-05-06 111118 crypto-5.png>)
 
 # RESULT
